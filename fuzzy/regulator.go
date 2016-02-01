@@ -78,6 +78,7 @@ func (r *InstanceRegulator) run() {
 			log.Printf("regulator: calculated disk weight vector: %v\n", diskWeightVector)
 			log.Printf("regulator: calculated cpu weight vector: %v\n", cpuWeightVector)
 			factor := r.processRules(diskWeightVector, cpuWeightVector)
+			// TODO: figure out good scale factor
 			instances := int(float64(m.Instances) * factor * 2.0)
 			if instances == 0 {
 				instances = m.Instances
